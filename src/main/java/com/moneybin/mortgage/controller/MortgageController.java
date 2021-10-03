@@ -23,52 +23,18 @@ public class MortgageController {
 
 	@Autowired
 	private MortgageService service;
-	
-	//List all the Mortgage Plans
+
+	// List all the Mortgage Plans
 	@GetMapping("/mortgages")
-	public List<Mortgage> list()
-	{
+	public List<Mortgage> list() {
 		return service.ListAllMortgages();
 	}
-	
-	//Fetch the existing mortgage plan for the given Customer_ID
-	@GetMapping("/mortgages/{customer_Id}")
-	public ResponseEntity<Mortgage> get(@PathVariable Integer customer_Id )
-	{
-		try
-		{
-			Mortgage mortgage = service.getMortgage(customer_Id);
-			return new ResponseEntity<Mortgage>(mortgage, HttpStatus.OK);
-		}catch (NoSuchElementException e)
-		{
-			return new ResponseEntity<Mortgage>(HttpStatus.NOT_FOUND);
-		}
-	}
-	
-	//Add new Mortgage Plan 
+
+	// Calculate Monthly Payment for the given Mortgage Plan
 	@PostMapping("/mortgages")
-	public Mortgage add(@RequestBody Mortgage mortgage)
-	{
-	     //System.out.println("mortgage in Controller is: " +mortgage);
-		
-		return service.saveMortgagePlan(mortgage);
+	public Mortgage calculateMonthlyPayment(@RequestBody Mortgage mortgage) {
+
+		return service.createMortgagePlan(mortgage);
 	}
-	
-	//Update the existing mortgage plan for the given customer_ID
-	@PutMapping("/mortgages/{customer_Id}")
-	public void update(@RequestBody Mortgage mortgage, @PathVariable Integer customer_Id)
-	{
-		
-		service.saveMortgagePlan(mortgage);
-	}
-	
-	//Delete the existing mortgage plan for the given customer_ID
-	@DeleteMapping("/mortgages/{customer_Id}")
-	public void delete(@PathVariable Integer customer_Id)
-	{
-		service.deleteMortgage(customer_Id);
-	}
+
 }
-
-
-	

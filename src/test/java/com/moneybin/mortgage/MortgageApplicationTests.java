@@ -7,16 +7,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.moneybin.mortgage.controller.HomeController;
+import com.moneybin.mortgage.controller.MortgageController;
 
 @SpringBootTest
 class MortgageApplicationTests {
 
 	@Autowired
-	private HomeController controller;
+	private HomeController homeController;
+	
+	@Autowired
+	private MortgageController mortgageController;
 
 	@Test
-	public void contextLoads() throws Exception {
-		assertThat(controller).isNotNull();
+	public void homeControllerLoads() throws Exception {
+		assertThat(homeController).isNotNull();
+	}	
+	@Test
+	public void mortgageControllerLoads() throws Exception {
+		assertThat(mortgageController).isNotNull();
 	}
 
 }
