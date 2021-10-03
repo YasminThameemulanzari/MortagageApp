@@ -47,15 +47,18 @@ public class MortgageController {
 	
 	//Add new Mortgage Plan 
 	@PostMapping("/mortgages")
-	public void add(@RequestBody Mortgage mortgage)
+	public Mortgage add(@RequestBody Mortgage mortgage)
 	{
-		service.saveMortgagePlan(mortgage);
+	     //System.out.println("mortgage in Controller is: " +mortgage);
+		
+		return service.saveMortgagePlan(mortgage);
 	}
 	
 	//Update the existing mortgage plan for the given customer_ID
 	@PutMapping("/mortgages/{customer_Id}")
 	public void update(@RequestBody Mortgage mortgage, @PathVariable Integer customer_Id)
 	{
+		
 		service.saveMortgagePlan(mortgage);
 	}
 	
@@ -66,3 +69,6 @@ public class MortgageController {
 		service.deleteMortgage(customer_Id);
 	}
 }
+
+
+	

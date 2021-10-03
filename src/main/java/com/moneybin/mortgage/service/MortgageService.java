@@ -22,11 +22,38 @@ public class MortgageService {
 		return repo.findAll();
 	}
 	
+	
 	//Add new Mortgage Plan 
 	
-	public void saveMortgagePlan(Mortgage cs)
+	public Mortgage saveMortgagePlan(Mortgage cs)
 	{
+		System.out.println("Customer_Name:" +cs.getCustomer_Name());
+		System.out.println("Years:" +cs.getYears());
+		System.out.println("Loan Amount:" + cs.getTotal_Loan_Amount());
+		
+		
+		  double b = ((cs.getInterest_Rate()  / 100 ) / 12);
+		  double U = cs.getTotal_Loan_Amount();
+		  System.out.println("b is: " + b); 
+		  System.out.println("U is: " + U); 
+		  
+		  
+	        int p = cs.getYears() * 12;
+	        System.out.println("p is: " + p); 
+	        double  x = 1;
+	        while(p > 0){
+	            x *= (1 + b);
+	            p--;
+	        }
+	        double monthlyPayment  = U * ((b * x) / (x - 1));
+	        cs.setFixed_Monthly_Payment_Amount(monthlyPayment);
+
+	     System.out.println("Result is: " +monthlyPayment);
+	     System.out.println("cs is: " +cs);
+	      
+	     
 		repo.save(cs);
+		return cs;
 	}
 	
 	//Fetch the existing Mortgage Plan for the given Customer_ID

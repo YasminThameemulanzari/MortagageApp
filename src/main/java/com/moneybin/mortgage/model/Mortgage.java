@@ -10,16 +10,16 @@ public class Mortgage {
 
 	private int Customer_ID;
 	private String Customer_Name;
-	private Double Total_Loan_Amount;
-	private int Interest_Rate;
+	private double Total_Loan_Amount;
+	private double Interest_Rate;
 	private int Years;
-	private Double Fixed_Monthly_Payment_Amount;
+	private double Fixed_Monthly_Payment_Amount;
 
 	public Mortgage() {
 	}
 
-	public Mortgage(int customer_Id, String customer_name, Double total_loan_amount, int interest_rate,
-			int years, Double fixed_monthly_payment_amount) {
+	public Mortgage(int customer_Id, String customer_name, double total_loan_amount, double interest_rate,
+			int years, double fixed_monthly_payment_amount) {
 		super();
 		Customer_ID = customer_Id;
 		Customer_Name = customer_name;
@@ -47,19 +47,19 @@ public class Mortgage {
 		Customer_Name = customer_Name;
 	}
 
-	public Double getTotal_Loan_Amount() {
+	public double getTotal_Loan_Amount() {
 		return Total_Loan_Amount;
 	}
 
-	public void setTotal_Loan_Amount(Double total_Loan_Amount) {
+	public void setTotal_Loan_Amount(double total_Loan_Amount) {
 		Total_Loan_Amount = total_Loan_Amount;
 	}
 
-	public int getInterest_Rate() {
+	public double getInterest_Rate() {
 		return Interest_Rate;
 	}
 
-	public void setInterest_Rate(int interest_Rate) {
+	public void setInterest_Rate(double interest_Rate) {
 		Interest_Rate = interest_Rate;
 	}
 
@@ -71,12 +71,19 @@ public class Mortgage {
 		Years = years;
 	}
 
-	public Double getFixed_Monthly_Payment_Amount() {
+	public double getFixed_Monthly_Payment_Amount() {
 		return Fixed_Monthly_Payment_Amount;
 	}
 
-	public void setFixed_Monthly_Payment_Amount(Double fixed_Monthly_Payment_Amount) {
+	public void setFixed_Monthly_Payment_Amount(double fixed_Monthly_Payment_Amount) {
 		Fixed_Monthly_Payment_Amount = fixed_Monthly_Payment_Amount;
 	}
 
+	public String toString() {
+		return "Mortgage [Customer_ID=" + Customer_ID + ", Customer_Name=" + Customer_Name + ", Total_Loan_Amount="
+				+ Total_Loan_Amount + ", Interest_Rate=" + Interest_Rate + ", Years=" + Years
+				+ ", Fixed_Monthly_Payment_Amount=" + Fixed_Monthly_Payment_Amount + "]";
+	}
+
+	
 }
