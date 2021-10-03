@@ -9,9 +9,10 @@
 		<version>2.5.5</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.example</groupId>
-	<artifactId>Mortgage_Plan</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<groupId>com.moneybin</groupId>
+	<artifactId>MortgageApplication</artifactId>
+	<version>1.0</version>
+	<packaging>war</packaging>
 	<name>Mortgage_Plan</name>
 	<description>Mortgage plan for Money Bin Inc. </description>
 	<properties>
