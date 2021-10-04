@@ -1,10 +1,11 @@
-package com.moneybin.mortgage.controller;
+package com.moneybin.mortgageplan.api.controller;
 
 import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.moneybin.mortgage.model.Mortgage;
-import com.moneybin.mortgage.service.MortgageService;
+import com.moneybin.mortgageplan.api.model.Mortgage;
+import com.moneybin.mortgageplan.api.service.MortgageService;
 
 @RestController
 public class MortgageController {
@@ -25,16 +26,20 @@ public class MortgageController {
 	private MortgageService service;
 
 	// List all the Mortgage Plans
-	@GetMapping("/mortgages")
+	@GetMapping(value = "/mortgages", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Mortgage> list() {
 		return service.ListAllMortgages();
 	}
 
-	// Calculate Monthly Payment for the given Mortgage Plan
-	@PostMapping("/mortgages")
-	public Mortgage calculateMonthlyPayment(@RequestBody Mortgage mortgage) {
+	// Calculate Monthly Payment for the given Mortgage  
+	@PostMapping(value = "/mortgages", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public Mortgage calculateMonthlyPayment(@RequestBody Mortgage mortgage) throws Exception{
 
-		return service.createMortgagePlan(mortgage);
+
+		return this.service.createMortgagePlan(mortgage);
+		//this.service.createMortgagePlan(mortgage);
+		//System.out.println(mortgage);
+		//return(mortgage);
 	}
 
 }

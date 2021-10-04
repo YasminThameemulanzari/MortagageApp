@@ -1,4 +1,4 @@
-package com.moneybin.mortgage;
+package com.moneybin.mortgageplan.api.testapplication;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -6,8 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.moneybin.mortgage.controller.HomeController;
-import com.moneybin.mortgage.controller.MortgageController;
+import com.moneybin.mortgageplan.api.controller.HomeController;
+import com.moneybin.mortgageplan.api.controller.MortgageController;
 
 @SpringBootTest
 class MortgageApplicationTests {

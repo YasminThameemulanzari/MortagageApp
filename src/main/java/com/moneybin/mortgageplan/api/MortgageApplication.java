@@ -1,4 +1,4 @@
-package com.moneybin.mortgage;
+package com.moneybin.mortgageplan.api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

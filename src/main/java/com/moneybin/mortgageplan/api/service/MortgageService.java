@@ -1,12 +1,12 @@
-package com.moneybin.mortgage.service;
+package com.moneybin.mortgageplan.api.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.moneybin.mortgage.dao.MortgageRepository;
-import com.moneybin.mortgage.model.Mortgage;
+import com.moneybin.mortgageplan.api.dao.MortgageRepository;
+import com.moneybin.mortgageplan.api.model.Mortgage;
 
 @Service
 public class MortgageService {
@@ -18,6 +18,12 @@ public class MortgageService {
 
 	public List<Mortgage> ListAllMortgages() {
 		return repo.findAll();
+	}
+	
+	public Mortgage createMortgagePlan(Mortgage mp) throws Exception{
+		calculateMonthlyPayment(mp);
+		repo.save(mp);
+		return mp;
 	}
 
 	// Calculate Monthly Payment for the given Mortgage Plan
@@ -47,10 +53,6 @@ public class MortgageService {
 
 	}
 
-	public Mortgage createMortgagePlan(Mortgage mp) {
-		calculateMonthlyPayment(mp);
-		repo.save(mp);
-		return mp;
-	}
+
 
 }
