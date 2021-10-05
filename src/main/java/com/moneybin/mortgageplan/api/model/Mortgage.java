@@ -4,22 +4,37 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Range;
 
 @Entity
 public class Mortgage {
 
 	private int Customer_ID;
+
+	@NotEmpty(message = "Please provide a valid name")
+	@Size(min = 2, message = "Name should have atleast 2 characters")
 	private String Customer_Name;
+
+	@Min(10)
 	private double Total_Loan_Amount;
+
+	@Range(min = 1, max = 99)
 	private double Interest_Rate;
+
+	@Range(min = 1, max = 99)
 	private int Years;
+
 	private double Fixed_Monthly_Payment_Amount;
 
 	public Mortgage() {
 	}
 
-	public Mortgage(int customer_Id, String customer_name, double total_loan_amount, double interest_rate,
-			int years, double fixed_monthly_payment_amount) {
+	public Mortgage(int customer_Id, String customer_name, double total_loan_amount, double interest_rate, int years,
+			double fixed_monthly_payment_amount) {
 		super();
 		Customer_ID = customer_Id;
 		Customer_Name = customer_name;
@@ -85,5 +100,4 @@ public class Mortgage {
 				+ ", Fixed_Monthly_Payment_Amount=" + Fixed_Monthly_Payment_Amount + "]";
 	}
 
-	
 }

@@ -2,13 +2,17 @@ package com.moneybin.mortgageplan.api.service;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 
 import com.moneybin.mortgageplan.api.dao.MortgageRepository;
 import com.moneybin.mortgageplan.api.model.Mortgage;
 
 @Service
+@Validated
 public class MortgageService {
 
 	@Autowired
@@ -20,14 +24,14 @@ public class MortgageService {
 		return repo.findAll();
 	}
 	
-	public Mortgage createMortgagePlan(Mortgage mp) throws Exception{
+	public Mortgage createMortgagePlan(@Valid Mortgage mp) throws Exception{
 		calculateMonthlyPayment(mp);
 		repo.save(mp);
 		return mp;
 	}
 
 	// Calculate Monthly Payment for the given Mortgage Plan
-	public Mortgage calculateMonthlyPayment(Mortgage cs) {
+	public Mortgage calculateMonthlyPayment(@Valid Mortgage cs) {
 		System.out.println("Customer_Name:" + cs.getCustomer_Name());
 		System.out.println("Years:" + cs.getYears());
 		System.out.println("Loan Amount:" + cs.getTotal_Loan_Amount());

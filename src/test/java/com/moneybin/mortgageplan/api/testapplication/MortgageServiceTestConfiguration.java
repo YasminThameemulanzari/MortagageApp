@@ -14,8 +14,7 @@ public class MortgageServiceTestConfiguration {
 
 	@Bean
 	@Primary
-	public MortgageService mortgageService()
-	{
+	public MortgageService mortgageService() {
 		return Mockito.mock(MortgageService.class);
 	}
 }

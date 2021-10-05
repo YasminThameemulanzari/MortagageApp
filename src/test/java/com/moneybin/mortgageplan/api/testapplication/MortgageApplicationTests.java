@@ -14,14 +14,19 @@ class MortgageApplicationTests {
 
 	@Autowired
 	private HomeController homeController;
-	
+
 	@Autowired
 	private MortgageController mortgageController;
 
 	@Test
+	public void contextLoads() {
+	}
+
+	@Test
 	public void homeControllerLoads() throws Exception {
 		assertThat(homeController).isNotNull();
-	}	
+	}
+
 	@Test
 	public void mortgageControllerLoads() throws Exception {
 		assertThat(mortgageController).isNotNull();
