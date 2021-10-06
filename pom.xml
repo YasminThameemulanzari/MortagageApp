@@ -10,7 +10,7 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.moneybin</groupId>
-	<artifactId>mortgages</artifactId>
+	<artifactId>mortgage-plan-application</artifactId>
 	<packaging>war</packaging>
 	<name>Mortgage_Plan</name>
 	<description>Mortgage plan for Money Bin Inc. </description>

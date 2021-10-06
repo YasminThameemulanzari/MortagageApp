@@ -6,7 +6,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Range;
 
@@ -15,17 +14,16 @@ public class Mortgage {
 
 	private int Customer_ID;
 
-	@NotEmpty(message = "Please provide a valid name")
-	@Size(min = 2, message = "Name should have atleast 2 characters")
+	@NotEmpty(message = "Name must not be empty.")
 	private String Customer_Name;
 
-	@Min(10)
+	@Min(message = "Total Loan Amount is not valid. Minimum Loan Amount must be 10", value = 10)
 	private double Total_Loan_Amount;
 
-	@Range(min = 1, max = 99)
+	@Range(min = 1, max = 20, message = "Interest Rate must be between 1 and 20")
 	private double Interest_Rate;
 
-	@Range(min = 1, max = 99)
+	@Range(min = 1, max = 50, message = "Number of years must be between 1 and 50")
 	private int Years;
 
 	private double Fixed_Monthly_Payment_Amount;

@@ -26,6 +26,14 @@
 			<h1>Money Bin Inc</h1>
 			<h4>Mortgage Monthly Payment Calculator</h4>
 		</div>
+		<div class="row">
+			<div class="col-md-auto">
+				<div id="error" class="alert alert-danger mt-4 d-none" role="alert">
+					<ul></ul>
+				</div>
+			</div>
+		</div>
+
 		<div class="container">
 			<div class="row">
 				<div class="col-md order-md-2 mb-3">
@@ -40,7 +48,7 @@
 				<div class="col-md-4 order-md-2 mb-3">
 					<div class="form-group">
 						<label for="totalLoan">Total Loan Amount (&euro;)</label> <input
-							type="text" required class="form-control" id="totalLoan"
+							type="number" required class="form-control" id="totalLoan"
 							placeholder="Enter Loan Amount">
 						<!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
 					</div>
@@ -93,7 +101,10 @@
         	interest_Rate:parseFloat(document.querySelector('#interestRate').value),
             years: parseFloat(document.querySelector('#paybackYears').value)
         };
-		
+
+		document.querySelector('#result').classList.add('d-none');
+		document.querySelector('#error').classList.add('d-none');
+
          fetch('http://localhost:8081/mortgages', {
            method: 'POST',  
            headers: {
@@ -103,7 +114,19 @@
          })
          .then(response => response.json())
          .then(result => {
-           console.log('Success:', result);
+
+		   if(result.error){
+			console.log('Error:', result);
+			   var messages = "";
+			   result.errors.forEach(err => {
+				   messages += "<li>" + err.defaultMessage + "</li>";
+			   });
+			   document.querySelector('#error ul').innerHTML = messages;
+			   document.querySelector('#error').classList.remove('d-none');
+			   return;
+		   }
+
+		   console.log('Success:', result);
            var monthlyPayment = result.fixed_Monthly_Payment_Amount;
            document.querySelector('#monthlyPayment').innerText = (monthlyPayment.toFixed(2));
            document.querySelector('#totalYears').innerText = (result.years);
@@ -113,11 +136,7 @@
           console.error('Error:', error);
         });
         
-    }
-   
-
+    }  
     </script>
-
 </body>
-
 </html>

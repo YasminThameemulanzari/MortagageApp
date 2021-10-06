@@ -31,28 +31,31 @@ public class MortgageService {
 	}
 
 	// Calculate Monthly Payment for the given Mortgage Plan
+	// Mortgage formula:
+	// =================
+	//	E = Fixed monthly payment
+	//	b = Interest on a monthly basis
+	//	U = Total loan
+	//	p = Number of payments
+	//  E = U[b(1 + b)^p]/[(1 + b)^p - 1]
+
+		
 	public Mortgage calculateMonthlyPayment(@Valid Mortgage cs) {
-		System.out.println("Customer_Name:" + cs.getCustomer_Name());
-		System.out.println("Years:" + cs.getYears());
-		System.out.println("Loan Amount:" + cs.getTotal_Loan_Amount());
 
-		double b = ((cs.getInterest_Rate() / 100) / 12);
-		double U = cs.getTotal_Loan_Amount();
-		System.out.println("b is: " + b);
-		System.out.println("U is: " + U);
+		double b = ((cs.getInterest_Rate() / 100) / 12);      //Calculate Interest on a monthly basis 
+		double U = cs.getTotal_Loan_Amount();                 //Total loan amount received in input
+		int p = cs.getYears() * 12;                           //Calculate Number of Payments
 
-		int p = cs.getYears() * 12;
-		System.out.println("p is: " + p);
+		//Calculate (1 + b)^p part -> x 
 		double x = 1;
 		while (p > 0) {
 			x *= (1 + b);
 			p--;
 		}
-		double monthlyPayment = U * ((b * x) / (x - 1));
+		
+		double monthlyPayment = U * ((b * x) / (x - 1));      // Calculate E = U[b(1 + b)^p]/[(1 + b)^p - 1]
+		
 		cs.setFixed_Monthly_Payment_Amount(monthlyPayment);
-
-		System.out.println("Result is: " + monthlyPayment);
-		System.out.println("cs is: " + cs);
 		return cs;
 
 	}
