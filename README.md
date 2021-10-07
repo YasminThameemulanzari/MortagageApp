@@ -70,7 +70,7 @@ A step by step procedure that tells how to get a development environment running
 
 ### Table Structure
 
-![This is an image](Images/TableStructure.png)
+![This is an image](Images/TableStructure.PNG)
 
 - [ ] SQL to create table
 
@@ -102,7 +102,7 @@ A step by step procedure that tells how to get a development environment running
 
 ## Build and run the application 
 
-- [ ] Option 1: Using IDE
+- [ ] Option 1: Using IDE 
             Execute the main method in the com.moneybin.mortgageplan.api.MortgageApplication class from IDE. The mortgage application will start running at http://localhost:8081 as the port was setup to 8081 in application.properties.
 - [ ] Option 2:  Using maven build tool 
   - [ ] mvn clean compile package
