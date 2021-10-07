@@ -105,7 +105,7 @@
 		document.querySelector('#result').classList.add('d-none');
 		document.querySelector('#error').classList.add('d-none');
 
-         fetch('http://localhost:8081/mortgages', {
+         fetch('http://localhost:8081/calculateMonthlyPayment', {
            method: 'POST',  
            headers: {
              'Content-Type': 'application/json',

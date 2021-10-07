@@ -37,7 +37,7 @@ public class MortgageController {
 	@ApiResponses(value = 
 		{ @ApiResponse(code = 200, message = "Mortgage Plan is successfully created"),
 		  @ApiResponse(code = 400, message = "Input validation failed!") })
-	@PostMapping(value = "/mortgages", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(value = "/calculateMonthlyPayment", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public Mortgage calculateMonthlyPayment(@Valid @RequestBody Mortgage mortgage) throws Exception {
 		return this.service.createMortgagePlan(mortgage);
 	}

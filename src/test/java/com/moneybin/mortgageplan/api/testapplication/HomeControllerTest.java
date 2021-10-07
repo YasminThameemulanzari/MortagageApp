@@ -16,9 +16,9 @@ public class HomeControllerTest {
 
 	@Autowired
 	private MockMvc mockMvc;
-	
+
 	@Test
-	public void shouldReturnWebInterface() throws Exception {
+	public void shouldReturnWebInterface_TextContainMortgageMonthlyPaymentCalculator() throws Exception {
 		this.mockMvc.perform(get("/home")).andDo(print()).andExpect(status().isOk());
 	}
 }
