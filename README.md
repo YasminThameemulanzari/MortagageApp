@@ -155,5 +155,5 @@ SELECT * FROM mortgagedb.mortgage;
 Swagger API Documentation is enabled for this Mortgage Application to help understanding about the different endpoints and Interfaces.
 Endpoint to get Swagger API Documentation:
  http://localhost:8081/swagger-ui/#/mortgage-controller/getUsingGET
- 
-![This is an image](Images/SwaggerAPIDocumentaion.png)
+
+
