@@ -6,11 +6,14 @@ The CEO of the bank has given the requirement like this:
 
 "Given a total loan of X € and a fixed yearly interest rate of Y %. The customer wants to pay the same amount each month for Z years. How much should the customer pay each month to pay off the whole debt?"
  
-## Input
-
 ![This is an image](Images/mortgageplan.png)
  
+## Input
+
+![This is an image](Images/Input.png)
+ 
 ## Output
+![This is an image](Images/Output.png)
  
 # What's Inside?
 
@@ -52,6 +55,9 @@ The CEO of the bank has given the requirement like this:
 
 # Project Structure
   
+![This is an image](Images/ProjectStructure1.png)
+![This is an image](Images/ProjectStructure2.png)
+
 # Installation Procedure
 
 This application is packaged as a war which has Tomcat 9 embedded. No Tomcat or JBoss installation is necessary.  Make sure that the system satisfies all the software requirements mentioned above. 
@@ -64,14 +70,7 @@ A step by step procedure that tells how to get a development environment running
 
 ### Table Structure
 
-        Field Name	                Type	    Null	Key 
-
-        Customer_ID	                  Integer	NO	  PRIMARY
-        Customer_Name	                String	NO	
-        Total_Loan_Amount	            Double	NO	
-        Interest_Rate	                Double 	NO	
-        Years                       	Integer NO	
-        Fixed_Monthly_Payment_Amount	Double	NO	
+![This is an image](Images/TableStructure.png)
 
 - [ ] SQL to create table
 
@@ -116,35 +115,45 @@ A step by step procedure that tells how to get a development environment running
 # Web Interface
 As part of this Mortgage Application, Web Interface has been designed to calculate “Fixed monthly payment” by entering all required information for the calculation. 
 On successful launch of this application will result in web interface which can be accessed via endpoint http://localhost:8081/home
-			
+
+![This is an image](Images/webInterfaceHome.png)		
+
 # Validation
 
 Customer has to enter all the mandatory fields in this home page. Necessary field level validations have been and appropriate error messages are displayed. 
 
 Note: Considering the time and deadline, Only backend validation has been done at Mortgage REST API, Frond end validation has not been done as the main goal of the project is to validate the REST API which is created in Spring Boot. 
 
- 
- 
- 
+![This is an image](Images/Validation1.png)
+![This is an image](Images/Validation2.png)
+![This is an image](Images/Validation3.png)
+![This is an image](Images/Validation4.png)
+  
  
 # Calculation
 By submitting the form with all valid values will invoke the REST API at the backend which is developed in Spring Boot to calculate the mortgage fixed monthly payment amount and store the results in MySQL database. 
  
- 
+ ![This is an image](Images/Calculation.png)
+  
 # Prospects
 The list of all available prospects can be viewed using endpoint http://localhost:8081/prospects as shown below. 
+
+![This is an image](Images/Prospects.png)
  
 # Fetch mortgages
 List of all available mortgages which contains prospect information in JSON format can be accessed via endpoint http://localhost:8081/mortgages as shown below. 
 
+![This is an image](Images/FetchMortgages.png)
+
 # About Database
 On Successful save Operation of Mortgage REST API (POST), the mortgage details will be stored in MySQL database at the backend.
 SELECT * FROM mortgagedb.mortgage;
- 
+
+![This is an image](Images/MySQLDatabase.png)
  
 # Swagger Documentation
 Swagger API Documentation is enabled for this Mortgage Application to help understanding about the different endpoints and Interfaces.
 Endpoint to get Swagger API Documentation:
  http://localhost:8081/swagger-ui/#/mortgage-controller/getUsingGET
  
-
+![This is an image](Images/SwaggerAPIDocumentaion.png)
