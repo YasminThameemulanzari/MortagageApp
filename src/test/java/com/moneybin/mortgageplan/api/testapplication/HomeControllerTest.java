@@ -1,9 +1,7 @@
 package com.moneybin.mortgageplan.api.testapplication;
 
-import static org.hamcrest.CoreMatchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.jupiter.api.Test;
@@ -20,7 +18,7 @@ public class HomeControllerTest {
 	private MockMvc mockMvc;
 	
 	@Test
-	public void shouldReturnWebInterface_TextContainMortgageMonthlyPaymentCalculator() throws Exception {
+	public void shouldReturnWebInterface() throws Exception {
 		this.mockMvc.perform(get("/home")).andDo(print()).andExpect(status().isOk());
 	}
 }

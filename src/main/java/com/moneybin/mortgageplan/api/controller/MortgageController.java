@@ -15,14 +15,16 @@ import org.springframework.web.bind.annotation.RestController;
 import com.moneybin.mortgageplan.api.model.Mortgage;
 import com.moneybin.mortgageplan.api.service.MortgageService;
 
-import io.swagger.annotations.*;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 
 @RestController
 @Validated
 public class MortgageController {
 
 	@Autowired
-	private MortgageService service;
+	MortgageService service;
 
 	@ApiOperation(value = "View list of available mortgages", response = Iterable.class)
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Successfully retrieved the mortgages list") })
